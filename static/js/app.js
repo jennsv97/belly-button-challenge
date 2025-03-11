@@ -61,9 +61,9 @@ function buildCharts(sample) {
     }
     //Layout ( copied the names on the provided UCI Dashboard images )
     let bubbleLayout = {
-      title: "Bacteria Cultures Per Sample"
-      xaxis: {title: "OTU ID"}
-      yaxis: {title: "Number of Bacteria"}
+      title: "Bacteria Cultures Per Sample",
+      xaxis: {title: "OTU ID"},
+      yaxis: {title: "Number of Bacteria"},
       hovermode: "closest"
     };
 
