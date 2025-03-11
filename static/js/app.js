@@ -37,16 +37,39 @@ function buildCharts(sample) {
 
 
     // Filter the samples for the object with the desired sample number
-    let result = samples.find(obj => obj.id == sample);
+    let results = samples.find(obj => obj.id == sample);
 
 
     // Get the otu_ids, otu_labels, and sample_values
+    let otu_ids = results.otu_ids;
+    let otu_labels = results.otu_labels;
+    let sample_values = results.sample_values;
 
 
     // Build a Bubble Chart
+    let bubbleTrace = {
+      x: otu_ids,
+      y: sample_values,
+      text: otu_labels,
+      mode: "markers",
+      markers: {
+        size: sample_values,
+        color: otu_ids,
+        colorscale: "Rainbow",
+        opacity: 0.7 
+      }
+    }
+    //Layout ( copied the names on the provided UCI Dashboard images )
+    let bubbleLayout = {
+      title: "Bacteria Cultures Per Sample"
+      xaxis: {title: "OTU ID"}
+      yaxis: {title: "Number of Bacteria"}
+      hovermode: "closest"
+    };
 
 
     // Render the Bubble Chart
+    Plotly.newPlot("bubble", [bubbleTrace], bubbleLayout);
 
 
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
